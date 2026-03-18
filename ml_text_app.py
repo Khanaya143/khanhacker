@@ -30,6 +30,19 @@ X = df[['distance']]
 y = df['fare']
 st.subheader("Enter Trip Details")
 
+
+st.subheader("Enter Trip Details")
+
+y_pred = model.predict(X_test)
+
+r2 = r2_score(y_test, y_pred)
+
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+
+st.subheader("Model Performance")
+
+st.write(f"R² Score: {r2:.2f}")
+st.write(f"RMSE: {rmse:.2f}")
 distance = st.number_input(
     "Step 1: Enter Distance (km)",
     min_value=0.0,
@@ -41,29 +54,6 @@ passengers = st.number_input(
     min_value=1,
     value=1
 )
-st.subheader("Enter Trip Details")
-
-distance = st.number_input(
-    "Step 1: Enter Distance (km)",
-    min_value=0.0,
-    value=5.0
-)
-
-passengers = st.number_input(
-    "Step 2: Enter Number of Passengers",
-    min_value=1,
-    value=1
-)
-y_pred = model.predict(X_test)
-
-r2 = r2_score(y_test, y_pred)
-
-rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-
-st.subheader("Model Performance")
-
-st.write(f"R² Score: {r2:.2f}")
-st.write(f"RMSE: {rmse:.2f}")
 hours = st.number_input(
     "Step 3: Hour of Day (0-23)",
     min_value=0,
